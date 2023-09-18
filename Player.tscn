@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://83msbglobkfv"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_8m8pf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aqvi6"]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_epdt3"]
+points = PackedVector3Array(0.0993246, -0.360985, -0.231537, 0.0389958, 0.239638, 0.293646, -0.035892, 0.239964, 0.294044, -0.0510636, 0.361128, -0.246679, -0.291586, -0.25557, 0.0390724, 0.261523, -0.26726, 0.127816, 0.26504, 0.301057, -0.0962333, -0.066246, -0.392305, 0.220371, -0.187134, 0.422819, 0.0694461, -0.213165, -0.266634, -0.198388, -0.273813, 0.253058, -0.110047, 0.190141, 0.392117, 0.129786, -0.0670932, -0.488895, -0.0365568, -0.242997, 0.222362, 0.172068, 0.0686838, 0.223916, -0.289549, 0.246541, -0.296791, -0.139369, 0.0848856, 0.46964, -0.0968545, -0.095652, -0.254434, 0.278532, 0.144808, -0.452286, 0.0693391, 0.1427, -0.222814, 0.261515, 0.261555, 0.222806, 0.142634, -0.110057, -0.253021, -0.27382, -0.0362558, 0.439142, 0.175711, -0.140142, 0.253674, -0.259602, 0.294055, -0.239888, -0.03586, 0.187179, 0.252281, -0.228503, 0.113302, -0.238506, -0.274182, -0.228482, -0.311768, 0.157394, -0.126757, 0.453134, -0.0965686, -0.156426, -0.421485, -0.126345, -0.291582, 0.255566, 0.0390718, 0.0995219, -0.452071, -0.126487)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o4kps"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_7cbq6"]
+albedo_color = Color(0.682353, 0.0627451, 0, 1)
+
+[node name="Player" type="RigidBody3D" groups=["units"]]
+transform = Transform3D(1.01013, 0, 0, 0, 1.01013, 0, 0, 0, 1.01013, 0, 1.02085, 0)
+lock_rotation = true
+script = ExtResource("1_8m8pf")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.11491, 0, 0, 0, 0.752814, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_aqvi6")
+
+[node name="PlayerCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.15647, 0, 0, 0, 0.830518, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_epdt3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.189356, 0, 0, 0, 0.026743, 0, 0, 0, 0.128647, 0.231744, 0.421191, 0.00440764)
+mesh = SubResource("CapsuleMesh_o4kps")
+surface_material_override/0 = SubResource("ORMMaterial3D_7cbq6")
